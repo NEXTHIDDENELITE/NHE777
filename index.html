@@ -1,192 +1,180 @@
-<!-- GAMING HERO SECTION -->
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXT HIDDEN ELITE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:wght@300;500;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<section class="gaming-hero">
+    <div id="cursor-glow"></div>
 
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content">
-
-        <span class="hero-tag">
-            #1 FREE FIRE GAMING TOOLS
-        </span>
-
-        <h1>
-            NEXT HIDDEN ELITE
-        </h1>
-
-        <p>
-            PREMIUM GAMING WEBSITE WITH ADVANCED TOOLS,
-            FREE UID BYPASS, EMULATOR SUPPORT,
-            ELITE PANELS & FUTURISTIC EXPERIENCE.
-        </p>
-
-        <div class="hero-buttons">
-
-            <a href="#tools" class="gaming-btn primary-btn">
-                <i class="fa-solid fa-rocket"></i>
-                EXPLORE TOOLS
-            </a>
-
-            <a href="https://discord.gg/2qNzUt3Z"
-            target="_blank"
-            class="gaming-btn discord-btn">
-
-                <i class="fa-brands fa-discord"></i>
-                JOIN DISCORD
-
-            </a>
-
-        </div>
-
+    <div class="top-bar">
+        <span class="status-dot"></span> 
+        <span class="top-bar-text">SYSTEM STATUS: OPERATIONAL // ACTIVE TERMINALS: <span id="user-count">1,248</span></span>
     </div>
 
-</section>
+    <nav class="navbar">
+        <div class="brand-logo">NHE<span class="logo-dot">.</span></div>
+        <ul class="nav-links">
+            <li><a class="nav-item" onclick="showHome()"><i class="fa-solid fa-terminal"></i> Terminal</a></li>
+            <li><a class="nav-item" onclick="showToast()"><i class="fa-solid fa-network-wired"></i> Network</a></li>
+            <li><a class="nav-item" onclick="showToast()"><i class="fa-solid fa-shield"></i> Protocol</a></li>
+            <li><a href="https://discord.gg/2qNzUt3Z" target="_blank" class="nav-item discord-nav"><i class="fa-brands fa-discord"></i> Discord</a></li>
+        </ul>
+    </nav>
 
+    <main id="main-content">
+        <header class="hero-header">
+            <h1 class="shiny-title">NEXT HIDDEN ELITE</h1>
+            <p class="subtitle">ADVANCED SECURITY & GAMING PROTOCOLS</p>
+        </header>
 
-<!-- TOOLS SECTION -->
+        <div class="panel-container">
+            
+            <div class="panel-card premium-border" onclick="showUIDBypass()">
+                <div class="status-badge status-active">Operational</div>
+                <div class="popular-badge"><i class="fa-solid fa-fire"></i> Popular</div>
+                <i class="fa-solid fa-fingerprint card-icon"></i>
+                <h3>FREE UID BYPASS</h3>
+                <p>Advanced identification masking and routing protocols.</p>
+            </div>
 
-<section id="tools" class="tools-section">
+            <div class="panel-card" onclick="showToast()">
+                <div class="status-badge status-upcoming">Maintenance</div>
+                <i class="fa-solid fa-bolt card-icon"></i>
+                <h3>FREE PANEL</h3>
+                <p>Standard issue utility toolset. Currently undergoing maintenance.</p>
+            </div>
 
-    <div class="section-header">
+            <div class="panel-card" onclick="showToast()">
+                <div class="status-badge status-upcoming">Pending</div>
+                <i class="fa-solid fa-desktop card-icon"></i>
+                <h3>EMULATOR BYPASS</h3>
+                <p>Virtual environment cloaking algorithms.</p>
+            </div>
 
-        <span>GAMING UTILITIES</span>
+            <div class="panel-card" onclick="showToast()">
+                <div class="status-badge status-upcoming">Pending</div>
+                <i class="fa-solid fa-crosshairs card-icon"></i>
+                <h3>TARGETING CORE</h3>
+                <p>Precision calibration and automated alignment.</p>
+            </div>
+            
+            <div class="panel-card premium-node" onclick="showToast()">
+                <div class="status-badge status-upcoming">VIP</div>
+                <i class="fa-solid fa-gem card-icon premium-icon"></i>
+                <h3>PREMIUM V1</h3>
+                <p>Tier-1 access to restricted architectural nodes.</p>
+            </div>
 
-        <h2>POPULAR TOOLS</h2>
+            <div class="panel-card premium-node" onclick="showToast()">
+                <div class="status-badge status-upcoming">VIP ELITE</div>
+                <i class="fa-solid fa-shield-halved card-icon premium-icon"></i>
+                <h3>PREMIUM V2</h3>
+                <p>Elite security measures and full system override.</p>
+            </div>
 
+        </div>
+    </main>
+
+    <section id="content-display-area">
+        <button class="back-button" onclick="showHome()">
+            <i class="fa-solid fa-chevron-left"></i> Return to Terminal
+        </button>
+        <div id="dynamic-content-text"></div>
+    </section>
+
+    <div id="toast" class="toast-msg">
+        <i class="fa-solid fa-encircled-lock"></i>
+        <span>Module is currently compiling. Coming Soon.</span>
     </div>
 
-    <div class="gaming-grid">
+    <footer>
+        &copy; 2026 NEXT HIDDEN ELITE. Secure Terminal. All Rights Reserved.
+    </footer>
 
-        <!-- TOOL CARD -->
+    <script>
+        // --- মাউস গ্লো ইফেক্ট ---
+        const glow = document.getElementById('cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+        document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
+        document.addEventListener('mouseenter', () => { glow.style.opacity = '0.15'; });
 
-        <div class="gaming-card active-card">
+        // --- লাইভ ইউজার কাউন্টার র্যান্ডম অ্যানিমেশন ---
+        setInterval(() => {
+            const countElement = document.getElementById('user-count');
+            let currentCount = parseInt(countElement.innerText.replace(',', ''));
+            // হালকা আপ-ডাউন করবে রিয়ালিস্টিক দেখানোর জন্য
+            let change = Math.floor(Math.random() * 7) - 3; 
+            countElement.innerText = (currentCount + change).toLocaleString();
+        }, 3000);
 
-            <div class="card-top">
+        // --- নেভিগেশন লজিক ---
+        const mainContentDiv = document.getElementById('main-content');
+        const contentDisplayArea = document.getElementById('content-display-area');
+        const dynamicContentText = document.getElementById('dynamic-content-text');
+        let toastTimeout;
 
-                <span class="live-badge">
-                    ONLINE
-                </span>
+        function showHome() {
+            mainContentDiv.style.display = 'block';
+            contentDisplayArea.style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-                <div class="tool-icon red">
-                    <i class="fa-solid fa-fingerprint"></i>
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => { toast.classList.remove('show'); }, 3000);
+        }
+
+        function showUIDBypass() {
+            mainContentDiv.style.display = 'none';
+            contentDisplayArea.style.display = 'block';
+            
+            dynamicContentText.innerHTML = `
+                <div class="info-card-box">
+                    <div class="scanner-line"></div>
+                    <h2 class="section-title-box"><i class="fa-solid fa-terminal"></i> UID BYPASS MODULE</h2>
+                    
+                    <div class="download-interface">
+                        <div class="info-row-box">
+                            <span><i class="fa-solid fa-code-branch"></i> BYPASS VERSION:</span>
+                            <span class="info-row-value version-tag">V2.4</span>
+                        </div>
+
+                        <div class="info-row-box">
+                            <span><i class="fa-solid fa-key"></i> ZIP PASSWORD:</span>
+                            <span class="info-row-value zip-pass">1</span>
+                        </div>
+                        
+                        <div class="video-link-banner">
+                            <span class="v-text"><i class="fa-brands fa-youtube"></i> TUTORIAL PASS</span>
+                            <a href="https://discord.gg/MqpgJE25n5" target="_blank">
+                                <button class="v-btn">WATCH VIDEO</button>
+                            </a>
+                        </div>
+
+                        <p class="download-note">
+                            Secure cryptographic archive ready. Extract using the credentials provided above.
+                        </p>
+
+                        <a href="NHE_UID_BYPASS_V2.4.zip" download="NHE_UID_BYPASS_V2.4.zip" class="download-btn">
+                            <i class="fa-solid fa-cloud-arrow-down"></i> INITIATE DOWNLOAD
+                        </a>
+                    </div>
                 </div>
-
-            </div>
-
-            <h3>FREE UID BYPASS</h3>
-
-            <p>
-                Safe advanced bypass with smooth gameplay
-                and latest security update support.
-            </p>
-
-            <div class="tool-info">
-
-                <div>
-                    <span>VERSION</span>
-                    <strong>V2.4</strong>
-                </div>
-
-                <div>
-                    <span>STATUS</span>
-                    <strong>ACTIVE</strong>
-                </div>
-
-            </div>
-
-            <button class="download-tool-btn">
-                DOWNLOAD NOW
-            </button>
-
-        </div>
-
-        <!-- TOOL CARD -->
-
-        <div class="gaming-card">
-
-            <div class="card-top">
-
-                <span class="soon-badge">
-                    SOON
-                </span>
-
-                <div class="tool-icon blue">
-                    <i class="fa-solid fa-desktop"></i>
-                </div>
-
-            </div>
-
-            <h3>EMULATOR BYPASS</h3>
-
-            <p>
-                Powerful emulator anti-detection support
-                for stable gaming experience.
-            </p>
-
-            <button class="coming-btn">
-                COMING SOON
-            </button>
-
-        </div>
-
-        <!-- TOOL CARD -->
-
-        <div class="gaming-card">
-
-            <div class="card-top">
-
-                <span class="soon-badge">
-                    SOON
-                </span>
-
-                <div class="tool-icon purple">
-                    <i class="fa-solid fa-layer-group"></i>
-                </div>
-
-            </div>
-
-            <h3>FREE PANEL</h3>
-
-            <p>
-                Premium gaming panel with custom features
-                and ultra smooth optimization.
-            </p>
-
-            <button class="coming-btn">
-                COMING SOON
-            </button>
-
-        </div>
-
-        <!-- TOOL CARD -->
-
-        <div class="gaming-card">
-
-            <div class="card-top">
-
-                <span class="soon-badge">
-                    SOON
-                </span>
-
-                <div class="tool-icon gold">
-                    <i class="fa-solid fa-crown"></i>
-                </div>
-
-            </div>
-
-            <h3>PREMIUM V2</h3>
-
-            <p>
-                Elite premium package with exclusive
-                features and VIP gaming support.
-            </p>
-
-            <button class="coming-btn">
-                COMING SOON
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
+            `;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
