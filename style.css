@@ -1,419 +1,210 @@
-/* =========================
-   GAMING WEBSITE STYLE
-========================= */
-
-.gaming-hero{
-
-    position:relative;
-
-    min-height:100vh;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    text-align:center;
-
-    overflow:hidden;
-
-    background:
-    linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.85)),
-    url('https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=2070&auto=format&fit=crop')
-    center/cover no-repeat;
+:root {
+    --bg-primary: #050508;
+    --bg-secondary: #0b0b0f;
+    --bg-card: #111116;
+    --text-primary: #f0f0f5;
+    --text-secondary: #7e8494;
+    --accent-silver: #a6afb8;
+    --accent-bright-silver: #ffffff;
+    --border-color: rgba(255, 255, 255, 0.06);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.hero-overlay{
-
-    position:absolute;
-    inset:0;
-
-    background:
-    radial-gradient(circle at center,
-    rgba(255,0,80,.12),
-    transparent 60%);
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    /* সাইবারপাঙ্ক স্টাইলের হালকা গ্রিড ব্যাকগ্রাউন্ড */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.007) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.007) 1px, transparent 1px);
+    background-size: 30px 30px;
 }
 
-.hero-content{
-
-    position:relative;
-    z-index:2;
-
-    max-width:850px;
-    padding:20px;
+/* মাউস গ্লো */
+#cursor-glow {
+    position: fixed;
+    top: 0; left: 0; width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+    border-radius: 50%; pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%); opacity: 0.15; transition: opacity 0.3s;
 }
 
-.hero-tag{
+/* টপ নোটিফিকেশন বার */
+.top-bar {
+    background: #000;
+    padding: 8px; text-align: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 2px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.status-dot {
+    width: 6px; height: 6px; background-color: #00ff66;
+    border-radius: 50%; box-shadow: 0 0 8px #00ff66;
+    animation: blink 1.5s infinite;
+}
+@keyframes blink { 50% { opacity: 0.3; } }
 
-    display:inline-block;
+/* নেভিগেশন বার */
+.navbar {
+    background: rgba(5, 5, 8, 0.75);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    padding: 15px 50px; display: flex; justify-content: space-between;
+    align-items: center; position: sticky; top: 0; z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+.brand-logo {
+    font-family: 'Audiowide', cursive; font-size: 1.8rem;
+    color: var(--accent-bright-silver); letter-spacing: 2px;
+}
+.logo-dot { color: #ff3366; text-shadow: 0 0 10px #ff3366; }
+.nav-links { display: flex; gap: 30px; }
+.nav-item {
+    font-family: 'Rajdhani', sans-serif; font-size: 1rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary);
+    cursor: pointer; transition: var(--transition-smooth);
+}
+.nav-item:hover, .nav-item i { color: var(--accent-bright-silver); }
+.discord-nav i { color: #5865F2; }
 
-    background:rgba(255,0,80,.12);
-
-    border:1px solid rgba(255,0,80,.25);
-
-    color:#ff4d88;
-
-    padding:10px 18px;
-
-    border-radius:40px;
-
-    font-size:.9rem;
-    font-weight:700;
-
-    letter-spacing:2px;
-
-    margin-bottom:25px;
+/* হিরো হেডার (Shiny Text Effect) */
+.hero-header { text-align: center; padding: 70px 20px 40px; }
+.shiny-title {
+    font-family: 'Audiowide', cursive; font-size: clamp(2.2rem, 6vw, 3.8rem);
+    margin: 0; color: #fff; letter-spacing: 3px;
+    background: linear-gradient(90deg, #fff, #555, #fff);
+    background-size: 80% 100%; background-repeat: no-repeat;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    animation: shine 5s linear infinite;
+}
+@keyframes shine { 0% { background-position: -500%; } 100% { background-position: 500%; } }
+.subtitle {
+    font-family: 'Rajdhani', sans-serif; font-size: 1.05rem;
+    color: var(--text-secondary); margin-top: 12px; letter-spacing: 4px;
 }
 
-.gaming-hero h1{
+/* গ্রিড কন্টেইনার এবং কার্ড */
+.panel-container {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px; max-width: 1150px; margin: 0 auto 60px; padding: 0 20px;
+}
+.panel-card {
+    background: var(--bg-card); padding: 45px 30px; border-radius: 12px;
+    text-align: center; border: 1px solid var(--border-color);
+    position: relative; transition: var(--transition-smooth); cursor: pointer;
+}
+.panel-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 20px rgba(217, 217, 217, 0.03);
+}
+.card-icon { font-size: 2.5rem; margin-bottom: 20px; color: var(--text-secondary); transition: var(--transition-smooth); }
+.panel-card:hover .card-icon { color: #fff; transform: scale(1.05); }
+.panel-card h3 { font-family: 'Audiowide', cursive; font-size: 1.25rem; margin: 0 0 10px 0; letter-spacing: 1px; }
+.panel-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0; }
 
-    font-size:clamp(3rem,8vw,6rem);
-
-    font-family:'Orbitron',sans-serif;
-
-    font-weight:900;
-
-    line-height:1.1;
-
-    background:linear-gradient(to bottom,#fff,#9ea5b5);
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-
-    text-shadow:
-    0 0 30px rgba(255,255,255,.15);
+/* ব্যাজসমূহ */
+.status-badge {
+    position: absolute; top: 15px; right: 15px;
+    font-family: 'Rajdhani', sans-serif; font-size: 0.75rem; font-weight: 700;
+    padding: 3px 10px; border-radius: 4px; letter-spacing: 1px; text-transform: uppercase;
+}
+.status-active { background: rgba(0, 255, 102, 0.06); color: #00ff66; border: 1px solid rgba(0, 255, 102, 0.2); }
+.status-upcoming { background: rgba(255, 255, 255, 0.03); color: var(--text-secondary); border: 1px solid var(--border-color); }
+.popular-badge {
+    position: absolute; top: 15px; left: 15px;
+    font-family: 'Rajdhani', sans-serif; font-size: 0.75rem; font-weight: 700;
+    padding: 3px 10px; border-radius: 4px; background: rgba(255, 51, 102, 0.08);
+    color: #ff3366; border: 1px solid rgba(255, 51, 102, 0.2);
 }
 
-.gaming-hero p{
+/* প্রিমিয়াম বা ভিআইপি নোড কার্ড স্পেশাল ইফেক্ট */
+.premium-node { border: 1px dashed rgba(212, 175, 55, 0.15); }
+.premium-node:hover { border-color: #d4af37; box-shadow: 0 0 25px rgba(212, 175, 55, 0.1); }
+.premium-icon { color: rgba(212, 175, 55, 0.6); }
+.panel-card:hover .premium-icon { color: #d4af37; text-shadow: 0 0 15px #d4af37; }
 
-    margin-top:25px;
+/* ডাউনলোড ইন্টারফেস এরিয়া */
+#content-display-area {
+    display: none; max-width: 650px; margin: 30px auto 80px;
+    padding: 40px; background: var(--bg-card); border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.1); animation: fadeIn 0.4s ease;
+}
+.back-button {
+    background: transparent; border: 1px solid var(--border-color);
+    padding: 8px 16px; color: var(--text-secondary); font-family: 'Rajdhani', sans-serif;
+    font-weight: 700; border-radius: 6px; cursor: pointer; display: inline-flex;
+    align-items: center; gap: 8px; margin-bottom: 25px; transition: var(--transition-smooth);
+}
+.back-button:hover { color: #fff; border-color: #fff; background: rgba(255,255,255,0.02); }
 
-    color:#c3c7d3;
+.info-card-box { position: relative; overflow: hidden; }
+/* স্ক্যানার অ্যানিমেশন লাইন */
+.scanner-line {
+    position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+    animation: scan 3s linear infinite;
+}
+@keyframes scan { 0% { top: 0%; } 50% { top: 100%; } 100% { top: 0%; } }
 
-    line-height:1.9;
+.section-title-box { font-family: 'Audiowide', cursive; font-size: 1.6rem; margin-bottom: 25px; letter-spacing: 1px; }
+.download-interface { display: flex; flex-direction: column; gap: 15px; max-width: 420px; margin: 0 auto; }
 
-    font-size:1.05rem;
+.info-row-box {
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(255, 255, 255, 0.02); padding: 14px 20px;
+    border-radius: 8px; border: 1px solid var(--border-color);
+    font-family: 'Rajdhani', sans-serif; font-weight: 700; letter-spacing: 1px;
+}
+.info-row-box i { margin-right: 8px; color: var(--text-secondary); }
+.version-tag { background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 4px; font-size: 0.85rem; }
+.zip-pass { color: #ff3366; font-size: 1.1rem; }
+
+.video-link-banner {
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(255, 0, 85, 0.02); padding: 12px 20px;
+    border-radius: 8px; border: 1px dashed rgba(255, 0, 85, 0.2);
+}
+.v-text { color: #ff3366; font-family: 'Rajdhani', sans-serif; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.v-btn {
+    font-family: 'Rajdhani', sans-serif; font-weight: 700; background: #ff3366;
+    color: #fff; border: none; padding: 6px 16px; border-radius: 4px; cursor: pointer; transition: var(--transition-smooth);
+}
+.v-btn:hover { background: #ff0044; box-shadow: 0 0 15px rgba(255, 51, 102, 0.4); }
+.download-note { color: var(--text-secondary); font-size: 0.85rem; text-align: center; line-height: 1.5; margin: 10px 0; }
+
+.download-btn {
+    background: #fff; color: #000 !important; padding: 16px;
+    font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 800;
+    border-radius: 8px; text-transform: uppercase; letter-spacing: 1px;
+    text-align: center; transition: var(--transition-smooth); box-shadow: 0 0 20px rgba(255,255,255,0.1);
+}
+.download-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 25px rgba(255, 255, 255, 0.25); background: #e5e5e5; }
+
+/* টোস্ট নোটিফিকেশন */
+.toast-msg {
+    position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%);
+    background: rgba(11, 11, 22, 0.9); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.1); color: #fff;
+    padding: 16px 30px; border-radius: 8px; font-family: 'Rajdhani', sans-serif;
+    font-weight: 700; letter-spacing: 1px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 2000; display: flex; align-items: center; gap: 10px; opacity: 0;
+}
+.toast-msg.show { bottom: 40px; opacity: 1; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+
+/* ফুটার */
+footer {
+    text-align: center; padding: 35px; color: var(--text-secondary);
+    font-family: 'Rajdhani', sans-serif; font-size: 0.9rem; letter-spacing: 1px;
+    border-top: 1px solid var(--border-color); background: var(--bg-secondary);
 }
 
-.hero-buttons{
-
-    margin-top:40px;
-
-    display:flex;
-    justify-content:center;
-    gap:20px;
-
-    flex-wrap:wrap;
-}
-
-.gaming-btn{
-
-    padding:16px 34px;
-
-    border-radius:14px;
-
-    font-weight:700;
-
-    text-decoration:none;
-
-    letter-spacing:1px;
-
-    transition:.4s;
-}
-
-.primary-btn{
-
-    background:linear-gradient(135deg,#ff2d75,#ff0055);
-
-    color:#fff;
-
-    box-shadow:
-    0 0 25px rgba(255,0,85,.35);
-}
-
-.primary-btn:hover{
-
-    transform:translateY(-5px) scale(1.04);
-
-    box-shadow:
-    0 12px 30px rgba(255,0,85,.45);
-}
-
-.discord-btn{
-
-    background:rgba(255,255,255,.05);
-
-    border:1px solid rgba(255,255,255,.1);
-
-    color:#fff;
-}
-
-.discord-btn:hover{
-
-    background:#5865F2;
-    border-color:#5865F2;
-
-    transform:translateY(-5px);
-}
-
-/* TOOLS */
-
-.tools-section{
-
-    padding:120px 20px;
-
-    background:#08080d;
-}
-
-.section-header{
-
-    text-align:center;
-
-    margin-bottom:70px;
-}
-
-.section-header span{
-
-    color:#ff4d88;
-
-    letter-spacing:3px;
-
-    font-size:.9rem;
-    font-weight:700;
-}
-
-.section-header h2{
-
-    margin-top:15px;
-
-    font-size:3rem;
-
-    font-family:'Orbitron',sans-serif;
-}
-
-.gaming-grid{
-
-    max-width:1300px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(280px,1fr));
-
-    gap:30px;
-}
-
-.gaming-card{
-
-    background:
-    linear-gradient(180deg,
-    rgba(255,255,255,.04),
-    rgba(255,255,255,.02));
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:24px;
-
-    padding:35px;
-
-    transition:.5s;
-
-    position:relative;
-
-    overflow:hidden;
-}
-
-.gaming-card::before{
-
-    content:'';
-
-    position:absolute;
-
-    top:-100%;
-    left:-40%;
-
-    width:80px;
-    height:300%;
-
-    background:rgba(255,255,255,.08);
-
-    transform:rotate(25deg);
-
-    transition:1s;
-}
-
-.gaming-card:hover::before{
-
-    left:140%;
-}
-
-.gaming-card:hover{
-
-    transform:translateY(-10px);
-
-    border-color:rgba(255,255,255,.16);
-
-    box-shadow:
-    0 20px 40px rgba(0,0,0,.45);
-}
-
-.card-top{
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    margin-bottom:25px;
-}
-
-.live-badge,
-.soon-badge{
-
-    padding:7px 14px;
-
-    border-radius:40px;
-
-    font-size:.75rem;
-    font-weight:700;
-}
-
-.live-badge{
-
-    background:rgba(0,255,140,.12);
-
-    color:#00ff99;
-}
-
-.soon-badge{
-
-    background:rgba(255,255,255,.07);
-
-    color:#b7bcc7;
-}
-
-.tool-icon{
-
-    width:65px;
-    height:65px;
-
-    border-radius:18px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    font-size:1.5rem;
-
-    color:#fff;
-}
-
-.red{
-    background:linear-gradient(135deg,#ff0055,#ff4d88);
-}
-
-.blue{
-    background:linear-gradient(135deg,#0066ff,#00a2ff);
-}
-
-.purple{
-    background:linear-gradient(135deg,#6d00ff,#ae00ff);
-}
-
-.gold{
-    background:linear-gradient(135deg,#ff9800,#ffcc00);
-}
-
-.gaming-card h3{
-
-    margin-bottom:15px;
-
-    font-size:1.4rem;
-
-    font-family:'Orbitron',sans-serif;
-}
-
-.gaming-card p{
-
-    color:#aeb4c2;
-
-    line-height:1.8;
-
-    margin-bottom:30px;
-}
-
-.tool-info{
-
-    display:flex;
-    justify-content:space-between;
-
-    margin-bottom:25px;
-
-    padding-top:20px;
-
-    border-top:1px solid rgba(255,255,255,.08);
-}
-
-.tool-info span{
-
-    display:block;
-
-    color:#848b99;
-
-    font-size:.8rem;
-
-    margin-bottom:6px;
-}
-
-.tool-info strong{
-
-    color:#fff;
-}
-
-.download-tool-btn,
-.coming-btn{
-
-    width:100%;
-
-    border:none;
-
-    padding:16px;
-
-    border-radius:14px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.4s;
-}
-
-.download-tool-btn{
-
-    background:linear-gradient(135deg,#ff0055,#ff4d88);
-
-    color:#fff;
-}
-
-.download-tool-btn:hover{
-
-    transform:translateY(-3px);
-
-    box-shadow:
-    0 10px 25px rgba(255,0,85,.35);
-}
-
-.coming-btn{
-
-    background:rgba(255,255,255,.05);
-
-    color:#9ca2af;
-}
-
-.active-card{
-
-    border-color:rgba(255,0,85,.2);
-
-    box-shadow:
-    0 0 35px rgba(255,0,85,.12);
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 768px) {
+    .navbar { padding: 15px 20px; }
+    .nav-links { gap: 15px; }
+    #content-display-area { margin: 20px; padding: 25px; }
 }
