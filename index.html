@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXT HIDDEN ELITE | GAMING TOOLS</title>
+    <title>NEXT HIDDEN ELITE | ULTRA PREMIUM GAMING PANEL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:wght@300;500;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,161 +13,196 @@
 
     <div id="cursor-glow"></div>
 
-    <div class="top-bar">
-        <span class="status-dot"></span> 
-        <span class="top-bar-text">SERVER STATUS: ONLINE // ACTIVE GAMERS USING TOOLS: <span id="user-count">1,424</span></span>
+    <div class="top-announcement">
+        <div class="pulse-container">
+            <span class="pulse-ring"></span>
+            <span class="pulse-dot"></span>
+        </div>
+        <span class="announcement-text">ATC SERVER LINKED // ACTIVE GAMERS: <span id="gamer-count">2,845</span></span>
     </div>
 
-    <nav class="navbar">
-        <div class="brand-logo">NHE<span class="logo-dot">.</span></div>
-        <ul class="nav-links">
-            <li><a class="nav-item" onclick="showHome()"><i class="fa-solid fa-gamepad"></i> Gaming Tools</a></li>
-            <li><a class="nav-item" onclick="showToast()"><i class="fa-solid fa-server"></i> Server Status</a></li>
-            <li><a class="nav-item" onclick="showToast()"><i class="fa-solid fa-shield-halved"></i> Anti-Ban</a></li>
-            <li><a href="https://discord.gg/2qNzUt3Z" target="_blank" class="nav-item discord-nav"><i class="fa-brands fa-discord"></i> Discord</a></li>
-        </ul>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo-area">
+                <span class="glitch-logo" data-text="NHE">NHE</span><span class="logo-hub">MODS</span>
+            </div>
+            <ul class="menu-list">
+                <li><a class="menu-link active" onclick="showHome()"><i class="fa-solid fa-gamepad"></i> DASHBOARD</a></li>
+                <li><a class="menu-link" onclick="showToast()"><i class="fa-solid fa-shield-halved"></i> ANTI-BAN</a></li>
+                <li><a href="https://discord.gg/2qNzUt3Z" target="_blank" class="menu-link discord-glow"><i class="fa-brands fa-discord"></i> DISCORD</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <main id="main-content">
-        <header class="hero-header">
-            <h1 class="shiny-title">NEXT HIDDEN ELITE</h1>
-            <p class="subtitle">PREMIUM GAMING TOOLS & BYPASS PROTOCOLS</p>
+    <main id="dashboard-view">
+        <header class="main-hero">
+            <div class="hero-tag">NEXT HIDDEN ELITE v4.0</div>
+            <h1 class="mega-title">NEO GAMING PROTOCOLS</h1>
+            <p class="hero-desc">Inject premium configurations and anti-ban bypass scripts with ultimate safety protections.</p>
         </header>
 
-        <div class="panel-container">
+        <div class="cards-grid">
             
-            <div class="panel-card premium-border" onclick="showUIDBypass()">
-                <div class="status-badge status-active">Active</div>
-                <div class="popular-badge"><i class="fa-solid fa-fire"></i> Popular</div>
-                <i class="fa-solid fa-id-card card-icon"></i>
+            <div class="gaming-card card-glow-red" onclick="showUIDBypass()">
+                <div class="card-tag tag-hot"><i class="fa-solid fa-fire"></i> ULTRA</div>
+                <div class="card-status status-online">Online</div>
+                <div class="icon-wrap color-red">
+                    <i class="fa-solid fa-fingerprint"></i>
+                </div>
                 <h3>FREE UID BYPASS</h3>
-                <p>Safe identification masking tool for seamless gaming access.</p>
+                <p>Instantly mask your game account identification tags safely.</p>
+                <div class="action-hint">LAUNCH INJECTOR <i class="fa-solid fa-arrow-right"></i></div>
             </div>
 
-            <div class="panel-card" onclick="showToast()">
-                <div class="status-badge status-upcoming">Updating</div>
-                <i class="fa-solid fa-bolt card-icon"></i>
-                <h3>FREE PANEL</h3>
-                <p>Standard issue gaming utility toolset. Currently updating for next patch.</p>
+            <div class="gaming-card card-glow-cyan" onclick="showToast()">
+                <div class="card-status status-update">Updating</div>
+                <div class="icon-wrap color-cyan">
+                    <i class="fa-solid fa-bolt-lightning"></i>
+                </div>
+                <h3>FREE PANEL UI</h3>
+                <p>Standard injector engine with cross-hair calibration mods.</p>
+                <div class="action-hint">LAUNCH INJECTOR <i class="fa-solid fa-arrow-right"></i></div>
             </div>
 
-            <div class="panel-card" onclick="showToast()">
-                <div class="status-badge status-upcoming">Pending</div>
-                <i class="fa-solid fa-desktop card-icon"></i>
+            <div class="gaming-card card-glow-purple" onclick="showToast()">
+                <div class="card-status status-soon">Soon</div>
+                <div class="icon-wrap color-purple">
+                    <i class="fa-solid fa-display"></i>
+                </div>
                 <h3>EMULATOR BYPASS</h3>
-                <p>PC bypass tool for matchmaking with mobile lobbies safely.</p>
+                <p>Advanced matchmaking separation blocker for global servers.</p>
+                <div class="action-hint">LAUNCH INJECTOR <i class="fa-solid fa-arrow-right"></i></div>
             </div>
 
-            <div class="panel-card" onclick="showToast()">
-                <div class="status-badge status-upcoming">Pending</div>
-                <i class="fa-solid fa-crosshairs card-icon"></i>
+            <div class="gaming-card card-glow-green" onclick="showToast()">
+                <div class="card-status status-soon">Soon</div>
+                <div class="icon-wrap color-green">
+                    <i class="fa-solid fa-crosshairs"></i>
+                </div>
                 <h3>TARGETING CORE</h3>
-                <p>Sensitivity booster and touch calibration optimization.</p>
-            </div>
-            
-            <div class="panel-card premium-node" onclick="showToast()">
-                <div class="status-badge status-upcoming">VIP Access</div>
-                <i class="fa-solid fa-gem card-icon premium-icon"></i>
-                <h3>PREMIUM V1</h3>
-                <p>Premium VIP tier tool features with fully optimized injection.</p>
+                <p>Touch delay reducer and aim optimization utility modules.</p>
+                <div class="action-hint">LAUNCH INJECTOR <i class="fa-solid fa-arrow-right"></i></div>
             </div>
 
-            <div class="panel-card premium-node" onclick="showToast()">
-                <div class="status-badge status-upcoming">VIP ELITE</div>
-                <i class="fa-solid fa-crown card-icon premium-icon"></i>
-                <h3>PREMIUM V2</h3>
-                <p>The ultimate elite tool setup with maximum protection features.</p>
+            <div class="gaming-card vip-card" onclick="showToast()">
+                <div class="card-tag tag-vip"><i class="fa-solid fa-crown"></i> VIP</div>
+                <div class="card-status status-soon">Locked</div>
+                <div class="icon-wrap color-gold">
+                    <i class="fa-solid fa-gem"></i>
+                </div>
+                <h3>PREMIUM NODE V1</h3>
+                <p>Get instant access to tier-1 fully optimized injection tools.</p>
+                <div class="action-hint">UNLOCK ACCESS <i class="fa-solid fa-lock"></i></div>
+            </div>
+
+            <div class="gaming-card vip-card" onclick="showToast()">
+                <div class="card-tag tag-vip">ELITE VIP</div>
+                <div class="card-status status-soon">Locked</div>
+                <div class="icon-wrap color-gold">
+                    <i class="fa-solid fa-shield-cat"></i>
+                </div>
+                <h3>PREMIUM NODE V2</h3>
+                <p>Maximum data-masking layers with high-tier gaming enhancements.</p>
+                <div class="action-hint">UNLOCK ACCESS <i class="fa-solid fa-lock"></i></div>
             </div>
 
         </div>
     </main>
 
-    <section id="content-display-area">
-        <button class="back-button" onclick="showHome()">
-            <i class="fa-solid fa-chevron-left"></i> Back to Tools
-        </button>
-        <div id="dynamic-content-text"></div>
+    <section id="download-view">
+        <div class="dl-container">
+            <button class="nav-back-btn" onclick="showHome()">
+                <i class="fa-solid fa-arrow-left-long"></i> RETURN TO DASHBOARD
+            </button>
+            <div id="dynamic-dl-content"></div>
+        </div>
     </section>
 
-    <div id="toast" class="toast-msg">
-        <i class="fa-solid fa-lock"></i>
-        <span>This tool is currently compiling. Coming Soon!</span>
+    <div id="custom-toast" class="neon-toast">
+        <div class="toast-loader"></div>
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span>Module Updating. Check back shortly.</span>
     </div>
 
-    <footer>
-        &copy; 2026 NEXT HIDDEN ELITE. Premium Gaming Tools Portal.
+    <footer class="gaming-footer">
+        <p>&copy; 2026 <span class="logo-accent">NEXT HIDDEN ELITE</span>. Engineered for Professional Gaming.</p>
     </footer>
 
     <script>
-        // --- মাউস গ্লো ইফেক্ট ---
-        const glow = document.getElementById('cursor-glow');
+        // --- মাউস ট্র্যাকিং গ্লো ---
+        const mouseGlow = document.getElementById('cursor-glow');
         document.addEventListener('mousemove', (e) => {
-            glow.style.left = e.clientX + 'px';
-            glow.style.top = e.clientY + 'px';
+            mouseGlow.style.left = e.clientX + 'px';
+            mouseGlow.style.top = e.clientY + 'px';
         });
-        document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
-        document.addEventListener('mouseenter', () => { glow.style.opacity = '0.15'; });
+        document.addEventListener('mouseleave', () => { mouseGlow.style.opacity = '0'; });
+        document.addEventListener('mouseenter', () => { mouseGlow.style.opacity = '1'; });
 
-        // --- লাইভ গেমার কাউন্টার অ্যানিমেশন ---
+        // --- রিয়েল-টাইম লাইভ ইউজার কাউন্টার ---
         setInterval(() => {
-            const countElement = document.getElementById('user-count');
-            let currentCount = parseInt(countElement.innerText.replace(',', ''));
-            let change = Math.floor(Math.random() * 9) - 4; // গেমার সংখ্যা রিয়েলিস্টिक আপ-ডাউন করবে
-            countElement.innerText = (currentCount + change).toLocaleString();
-        }, 2500);
+            const countBox = document.getElementById('gamer-count');
+            let current = parseInt(countBox.innerText.replace(',', ''));
+            let fluctuation = Math.floor(Math.random() * 11) - 5; 
+            countBox.innerText = (current + fluctuation).toLocaleString();
+        }, 2000);
 
-        // --- পেজ চেঞ্জ ও টোস্ট লজিক ---
-        const mainContentDiv = document.getElementById('main-content');
-        const contentDisplayArea = document.getElementById('content-display-area');
-        const dynamicContentText = document.getElementById('dynamic-content-text');
-        let toastTimeout;
+        // --- ড্যাশবোর্ড সুইচিং লজিক ---
+        const dashboard = document.getElementById('dashboard-view');
+        const downloadSec = document.getElementById('download-view');
+        const dlContent = document.getElementById('dynamic-dl-content');
+        let toastTimer;
 
         function showHome() {
-            mainContentDiv.style.display = 'block';
-            contentDisplayArea.style.display = 'none';
+            dashboard.style.display = 'block';
+            downloadSec.style.display = 'none';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function showToast() {
-            const toast = document.getElementById('toast');
-            toast.classList.add('show');
-            clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => { toast.classList.remove('show'); }, 3000);
+            const toast = document.getElementById('custom-toast');
+            toast.classList.add('active');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => { toast.classList.remove('active'); }, 3500);
         }
 
         function showUIDBypass() {
-            mainContentDiv.style.display = 'none';
-            contentDisplayArea.style.display = 'block';
+            dashboard.style.display = 'none';
+            downloadSec.style.display = 'block';
             
-            dynamicContentText.innerHTML = `
-                <div class="info-card-box">
-                    <div class="scanner-line"></div>
-                    <h2 class="section-title-box"><i class="fa-solid fa-download"></i> UID BYPASS DOWNLOAD</h2>
+            dlContent.innerHTML = `
+                <div class="premium-dl-box">
+                    <div class="cyber-scan-bar"></div>
+                    <div class="dl-header">
+                        <i class="fa-solid fa-circle-down main-dl-icon"></i>
+                        <h2>UID BYPASS MANAGER</h2>
+                        <span class="sub-badge">SECURE ARCHIVE</span>
+                    </div>
                     
-                    <div class="download-interface">
-                        <div class="info-row-box">
-                            <span><i class="fa-solid fa-code-branch"></i> TOOL VERSION:</span>
-                            <span class="info-row-value version-tag">V2.4</span>
+                    <div class="dl-rows-wrapper">
+                        <div class="dl-data-row">
+                            <span class="row-label"><i class="fa-solid fa-code-merge"></i> INTERFACE VERSION:</span>
+                            <span class="row-val tag-cyan">V2.4 / FINAL</span>
                         </div>
 
-                        <div class="info-row-box">
-                            <span><i class="fa-solid fa-key"></i> ZIP PASSWORD:</span>
-                            <span class="info-row-value zip-pass">1</span>
+                        <div class="dl-data-row">
+                            <span class="row-label"><i class="fa-solid fa-unlock-keyhole"></i> ARCHIVE PASSWORD:</span>
+                            <span class="row-val text-neon-red">1</span>
                         </div>
                         
-                        <div class="video-link-banner">
-                            <span class="v-text"><i class="fa-brands fa-youtube"></i> HOW TO USE?</span>
-                            <a href="https://discord.gg/MqpgJE25n5" target="_blank">
-                                <button class="v-btn">WATCH TUTORIAL</button>
-                            </a>
+                        <div class="tutorial-card">
+                            <div class="tut-info">
+                                <h4><i class="fa-brands fa-youtube"></i> Need setup guide?</h4>
+                                <p>Watch the step-by-step injection tutorial video.</p>
+                            </div>
+                            <a href="https://discord.gg/MqpgJE25n5" target="_blank" class="tut-link-btn">WATCH</a>
                         </div>
 
-                        <p class="download-note">
-                            Gaming zip archive is ready. Use the password <b>1</b> after extracting the tool.
+                        <p class="crypto-notice">
+                            Package compilation complete. Click below to start secure end-to-end download.
                         </p>
 
-                        <a href="NHE_UID_BYPASS_V2.4.zip" download="NHE_UID_BYPASS_V2.4.zip" class="download-btn">
-                            <i class="fa-solid fa-cloud-arrow-down"></i> DOWNLOAD TOOL NOW
+                        <a href="NHE_UID_BYPASS_V2.4.zip" download="NHE_UID_BYPASS_V2.4.zip" class="main-inject-btn">
+                            <i class="fa-solid fa-download"></i> START INJECTING (.ZIP)
                         </a>
                     </div>
                 </div>
