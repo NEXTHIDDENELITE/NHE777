@@ -1,211 +1,240 @@
 :root {
-    --bg-primary: #050508;
-    --bg-secondary: #0b0b0f;
-    --bg-card: #111116;
-    --text-primary: #f0f0f5;
-    --text-secondary: #7e8494;
-    --accent-silver: #a6afb8;
-    --accent-bright-silver: #ffffff;
-    --border-color: rgba(255, 255, 255, 0.06);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --bg-dark-core: #030305;
+    --bg-dark-surface: #09090e;
+    --bg-dark-card: #0f1017;
+    
+    --neon-red: #ff3355;
+    --neon-cyan: #00f3ff;
+    --neon-purple: #b533ff;
+    --neon-green: #00ff66;
+    --gold: #ffb700;
+    
+    --text-main: #f5f6fa;
+    --text-muted: #83899f;
+    --border-glow: rgba(255, 255, 255, 0.04);
 }
 
 body {
     margin: 0;
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
+    padding: 0;
+    background-color: var(--bg-dark-core);
+    color: var(--text-main);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
     overflow-x: hidden;
-    /* ডার্ক প্রিমিয়াম গেমিং গ্রিড ব্যাকগ্রাউন্ড */
+    /* ডায়নামিক টেক-লাইন ব্যাকগ্রাউন্ড */
     background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.007) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.007) 1px, transparent 1px);
-    background-size: 30px 30px;
+        radial-gradient(rgba(255, 51, 85, 0.02) 1px, transparent 0),
+        radial-gradient(rgba(0, 243, 255, 0.02) 1px, transparent 0);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
 }
 
-/* মাউস গ্লো ইফেক্ট */
+/* মাউস গ্লো */
 #cursor-glow {
     position: fixed;
-    top: 0; left: 0; width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 70%);
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0, 243, 255, 0.05) 0%, transparent 70%);
     border-radius: 50%; pointer-events: none; z-index: 9999;
-    transform: translate(-50%, -50%); opacity: 0.15; transition: opacity 0.3s;
+    transform: translate(-50%, -50%); opacity: 1; transition: opacity 0.3s ease;
 }
 
-/* টপ বার (লাইভ স্ট্যাটাস) */
-.top-bar {
-    background: #000;
-    padding: 10px; text-align: center;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 0.85rem; font-weight: 700; letter-spacing: 2px;
-    border-bottom: 1px solid var(--border-color);
-    display: flex; align-items: center; justify-content: center; gap: 8px;
+/* টপ এলার্ট বার */
+.top-announcement {
+    background: #000; padding: 12px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.9rem; font-weight: 700; letter-spacing: 2px;
 }
-.status-dot {
-    width: 6px; height: 6px; background-color: #00ff66;
-    border-radius: 50%; box-shadow: 0 0 8px #00ff66;
-    animation: blink 1.5s infinite;
+.pulse-container { position: relative; width: 10px; height: 10px; }
+.pulse-ring {
+    position: absolute; width: 100%; height: 100%;
+    background: var(--neon-green); border-radius: 50%;
+    animation: macro-pulse 1.8s ease-out infinite;
 }
-@keyframes blink { 50% { opacity: 0.3; } }
+.pulse-dot {
+    position: absolute; width: 100%; height: 100%;
+    background: var(--neon-green); border-radius: 50%;
+    box-shadow: 0 0 10px var(--neon-green);
+}
+@keyframes macro-pulse { 0% { transform: scale(0.6); opacity: 1; } 100% { transform: scale(2.8); opacity: 0; } }
+#gamer-count { color: var(--neon-green); font-weight: 700; }
 
-/* নেভিগেশন বার */
-.navbar {
-    background: rgba(5, 5, 8, 0.8);
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    padding: 15px 50px; display: flex; justify-content: space-between;
-    align-items: center; position: sticky; top: 0; z-index: 1000;
-    border-bottom: 1px solid var(--border-color);
+/* আল্ট্রা মডার্ন নেভিগেশন */
+.main-nav {
+    background: rgba(3, 3, 5, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border-glow); position: sticky; top: 0; z-index: 100;
 }
-.brand-logo {
-    font-family: 'Audiowide', cursive; font-size: 1.8rem;
-    color: var(--accent-bright-silver); letter-spacing: 2px;
+.nav-container {
+    max-width: 1200px; margin: 0 auto; padding: 18px 25px;
+    display: flex; justify-content: space-between; align-items: center;
 }
-.logo-dot { color: #ff3366; text-shadow: 0 0 10px #ff3366; }
-.nav-links { display: flex; list-style: none; gap: 30px; margin: 0; padding: 0; }
-.nav-item {
-    font-family: 'Rajdhani', sans-serif; font-size: 1rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary);
-    cursor: pointer; transition: var(--transition-smooth); text-decoration: none;
+.logo-area { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.7rem; letter-spacing: 1px; }
+.logo-hub { color: var(--neon-red); font-size: 1.1rem; margin-left: 5px; font-weight: 700; vertical-align: super; }
+.menu-list { display: flex; list-style: none; gap: 25px; margin: 0; padding: 0; }
+.menu-link {
+    text-decoration: none; color: var(--text-muted); font-weight: 700; font-size: 1.05rem;
+    letter-spacing: 1px; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 6px;
 }
-.nav-item:hover { color: var(--accent-bright-silver); }
-.nav-item i { margin-right: 5px; }
-.discord-nav i { color: #5865F2; }
+.menu-link:hover, .menu-link.active { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.4); }
+.discord-glow i { color: #5865F2; }
 
-/* হিরো হেডার (Premium Shiny Effect) */
-.hero-header { text-align: center; padding: 75px 20px 45px; }
-.shiny-title {
-    font-family: 'Audiowide', cursive; font-size: clamp(2.2rem, 6vw, 3.8rem);
-    margin: 0; color: #fff; letter-spacing: 3px;
-    background: linear-gradient(90deg, #fff, #555, #fff);
-    background-size: 80% 100%; background-repeat: no-repeat;
+/* হিরো হেডার */
+.main-hero { text-align: center; padding: 80px 20px 45px; }
+.hero-tag {
+    display: inline-block; padding: 4px 14px; background: rgba(255, 33, 85, 0.08);
+    border: 1px solid rgba(255, 33, 85, 0.2); color: var(--neon-red);
+    font-size: 0.85rem; font-weight: 700; border-radius: 4px; letter-spacing: 2px;
+}
+.mega-title {
+    font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: clamp(2rem, 5.5vw, 3.4rem);
+    margin: 15px 0 0 0; letter-spacing: 2px;
+    background: linear-gradient(135deg, #fff 30%, var(--text-muted));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    animation: shine 5s linear infinite;
 }
-@keyframes shine { 0% { background-position: -500%; } 100% { background-position: 500%; } }
-.subtitle {
-    font-family: 'Rajdhani', sans-serif; font-size: 1.1rem;
-    color: var(--text-secondary); margin-top: 12px; letter-spacing: 4px;
-}
+.hero-desc { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 12px auto 0; line-height: 1.6; }
 
-/* গেমিং টুলস কার্ড গ্রিড */
-.panel-container {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px; max-width: 1150px; margin: 0 auto 60px; padding: 0 20px;
+/* গেমিং কার্ড গ্রিড */
+.cards-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px; max-width: 1200px; margin: 0 auto 80px; padding: 0 25px;
 }
-.panel-card {
-    background: var(--bg-card); padding: 45px 30px; border-radius: 12px;
-    text-align: center; border: 1px solid var(--border-color);
-    position: relative; transition: var(--transition-smooth); cursor: pointer;
+.gaming-card {
+    background: var(--bg-dark-card); border: 1px solid var(--border-glow);
+    padding: 50px 35px; border-radius: 16px; position: relative;
+    cursor: pointer; transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-.panel-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 20px rgba(217, 217, 217, 0.03);
+.icon-wrap {
+    width: 65px; height: 65px; background: rgba(255,255,255,0.02);
+    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.3s ease;
 }
-.card-icon { font-size: 2.5rem; margin-bottom: 20px; color: var(--text-secondary); transition: var(--transition-smooth); }
-.panel-card:hover .card-icon { color: #fff; transform: scale(1.05); }
-.panel-card h3 { font-family: 'Audiowide', cursive; font-size: 1.25rem; margin: 0 0 10px 0; letter-spacing: 1px; }
-.panel-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0; }
+.gaming-card h3 { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.3rem; margin: 0 0 12px 0; letter-spacing: 0.5px; }
+.gaming-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 25px 0; }
+.action-hint { font-size: 0.9rem; font-weight: 700; letter-spacing: 1px; color: #fff; opacity: 0.6; transition: all 0.2s ease; }
+.gaming-card:hover .action-hint { opacity: 1; transform: translateX(4px); }
 
-/* ব্যাজসমূহ */
-.status-badge {
-    position: absolute; top: 15px; right: 15px;
-    font-family: 'Rajdhani', sans-serif; font-size: 0.75rem; font-weight: 700;
-    padding: 3px 10px; border-radius: 4px; letter-spacing: 1px; text-transform: uppercase;
-}
-.status-active { background: rgba(0, 255, 102, 0.06); color: #00ff66; border: 1px solid rgba(0, 255, 102, 0.2); }
-.status-upcoming { background: rgba(255, 255, 255, 0.03); color: var(--text-secondary); border: 1px solid var(--border-color); }
-.popular-badge {
-    position: absolute; top: 15px; left: 15px;
-    font-family: 'Rajdhani', sans-serif; font-size: 0.75rem; font-weight: 700;
-    padding: 3px 10px; border-radius: 4px; background: rgba(255, 51, 102, 0.08);
-    color: #ff3366; border: 1px solid rgba(255, 51, 102, 0.2);
-}
+/* বিভিন্ন নিয়ন হোভার ইফেক্টস */
+.card-glow-red:hover { border-color: var(--neon-red); box-shadow: 0 10px 30px rgba(255, 51, 85, 0.15); }
+.card-glow-red:hover .icon-wrap { background: var(--neon-red); color: #fff; box-shadow: 0 0 20px rgba(255, 51, 85, 0.4); }
 
-/* VIP/Premium কার্ড স্পেশাল গোল্ডেন ইফেক্ট */
-.premium-node { border: 1px dashed rgba(212, 175, 55, 0.15); }
-.premium-node:hover { border-color: #d4af37; box-shadow: 0 0 25px rgba(212, 175, 55, 0.1); }
-.premium-icon { color: rgba(212, 175, 55, 0.6); }
-.panel-card:hover .premium-icon { color: #d4af37; text-shadow: 0 0 15px #d4af37; }
+.card-glow-cyan:hover { border-color: var(--neon-cyan); box-shadow: 0 10px 30px rgba(0, 243, 255, 0.15); }
+.card-glow-cyan:hover .icon-wrap { background: var(--neon-cyan); color: #000; box-shadow: 0 0 20px rgba(0, 243, 255, 0.4); }
 
-/* ডাউনলোড ইন্টারফেস এরিয়া */
-#content-display-area {
-    display: none; max-width: 600px; margin: 30px auto 80px;
-    padding: 40px; background: var(--bg-card); border-radius: 14px;
-    border: 1px solid rgba(255,255,255,0.1); animation: fadeIn 0.4s ease;
-}
-.back-button {
-    background: transparent; border: 1px solid var(--border-color);
-    padding: 8px 16px; color: var(--text-secondary); font-family: 'Rajdhani', sans-serif;
-    font-weight: 700; border-radius: 6px; cursor: pointer; display: inline-flex;
-    align-items: center; gap: 8px; margin-bottom: 25px; transition: var(--transition-smooth);
-}
-.back-button:hover { color: #fff; border-color: #fff; background: rgba(255,255,255,0.02); }
+.card-glow-purple:hover { border-color: var(--neon-purple); box-shadow: 0 10px 30px rgba(181, 51, 255, 0.15); }
+.card-glow-purple:hover .icon-wrap { background: var(--neon-purple); color: #fff; box-shadow: 0 0 20px rgba(181, 51, 255, 0.4); }
 
-.info-card-box { position: relative; overflow: hidden; }
-/* স্ক্যানার লাইন অ্যানিমেশন */
-.scanner-line {
-    position: absolute; top: 0; left: 0; width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent, #fff, transparent);
-    animation: scan 3s linear infinite;
-}
-@keyframes scan { 0% { top: 0%; } 50% { top: 100%; } 100% { top: 0%; } }
+.card-glow-green:hover { border-color: var(--neon-green); box-shadow: 0 10px 30px rgba(0, 255, 102, 0.15); }
+.card-glow-green:hover .icon-wrap { background: var(--neon-green); color: #000; box-shadow: 0 0 20px rgba(0, 255, 102, 0.4); }
 
-.section-title-box { font-family: 'Audiowide', cursive; font-size: 1.5rem; margin-bottom: 25px; letter-spacing: 1px; text-align: center;}
-.download-interface { display: flex; flex-direction: column; gap: 15px; max-width: 420px; margin: 0 auto; }
+/* ভিআইপি কার্ড স্টাইল */
+.vip-card { border: 1px dashed rgba(255, 183, 0, 0.2); }
+.vip-card:hover { border-color: var(--gold); box-shadow: 0 10px 30px rgba(255, 183, 0, 0.12); }
+.vip-card:hover .icon-wrap { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(255, 183, 0, 0.4); }
 
-.info-row-box {
-    display: flex; align-items: center; justify-content: space-between;
-    background: rgba(255, 255, 255, 0.02); padding: 14px 20px;
-    border-radius: 8px; border: 1px solid var(--border-color);
-    font-family: 'Rajdhani', sans-serif; font-weight: 700; letter-spacing: 1px;
-}
-.info-row-box i { margin-right: 8px; color: var(--text-secondary); }
-.version-tag { background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 4px; font-size: 0.85rem; }
-.zip-pass { color: #ff3366; font-size: 1.1rem; }
+/* রঙের ক্যাটালগ */
+.color-red { color: var(--neon-red); } .color-cyan { color: var(--neon-cyan); }
+.color-purple { color: var(--neon-purple); } .color-green { color: var(--neon-green); } .color-gold { color: var(--gold); }
 
-.video-link-banner {
-    display: flex; align-items: center; justify-content: space-between;
-    background: rgba(255, 0, 85, 0.02); padding: 12px 20px;
-    border-radius: 8px; border: 1px dashed rgba(255, 0, 85, 0.2);
-}
-.v-text { color: #ff3366; font-family: 'Rajdhani', sans-serif; font-weight: 700; display: flex; align-items: center; gap: 8px; }
-.v-btn {
-    font-family: 'Rajdhani', sans-serif; font-weight: 700; background: #ff3366;
-    color: #fff; border: none; padding: 6px 16px; border-radius: 4px; cursor: pointer; transition: var(--transition-smooth);
-}
-.v-btn:hover { background: #ff0044; box-shadow: 0 0 15px rgba(255, 51, 102, 0.4); }
-.download-note { color: var(--text-secondary); font-size: 0.85rem; text-align: center; line-height: 1.5; margin: 10px 0; }
+/* ব্যাজ এলাইনমেন্ট */
+.card-status { position: absolute; top: 20px; right: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.status-online { color: var(--neon-green); } .status-update { color: var(--neon-cyan); } .status-soon { color: var(--text-muted); }
+.card-tag { position: absolute; top: 20px; left: 20px; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+.tag-hot { background: rgba(255, 51, 85, 0.1); color: var(--neon-red); border: 1px solid rgba(255, 51, 85, 0.2); }
+.tag-vip { background: rgba(255, 183, 0, 0.1); color: var(--gold); border: 1px solid rgba(255, 183, 0, 0.2); }
 
-.download-btn {
-    background: #fff; color: #000 !important; padding: 16px;
-    font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 800;
-    border-radius: 8px; text-transform: uppercase; letter-spacing: 1px;
-    text-align: center; transition: var(--transition-smooth); box-shadow: 0 0 20px rgba(255,255,255,0.1); text-decoration: none;
+/* নতুন ডাউনলোড ডিজাইন ভিউ */
+#download-view { display: none; padding: 40px 25px 80px; }
+.dl-container { max-width: 650px; margin: 0 auto; }
+.nav-back-btn {
+    background: transparent; border: 1px solid var(--border-glow); color: var(--text-muted);
+    padding: 10px 20px; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.95rem;
+    border-radius: 8px; cursor: pointer; transition: all 0.2s ease; margin-bottom: 30px;
 }
-.download-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 25px rgba(255, 255, 255, 0.25); background: #e5e5e5; }
+.nav-back-btn:hover { color: #fff; border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.02); }
 
-/* টোস্ট মেসেজ */
-.toast-msg {
+.premium-dl-box {
+    background: var(--bg-dark-card); border: 1px solid var(--neon-red);
+    border-radius: 20px; padding: 45px; position: relative; overflow: hidden;
+    box-shadow: 0 15px 40px rgba(255, 51, 85, 0.1);
+}
+.cyber-scan-bar {
+    position: absolute; width: 100%; height: 2px; left: 0; top: 0;
+    background: linear-gradient(90deg, transparent, var(--neon-red), transparent);
+    animation: slide-scan 3.5s linear infinite;
+}
+@keyframes slide-scan { 0% { top: 0%; } 50% { top: 100%; } 100% { top: 0%; } }
+
+.dl-header { text-align: center; margin-bottom: 35px; }
+.main-dl-icon { font-size: 3.5rem; color: var(--neon-red); margin-bottom: 15px; }
+.dl-header h2 { font-family: 'Orbitron', sans-serif; margin: 0; font-size: 1.6rem; letter-spacing: 0.5px; }
+.sub-badge { font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; color: var(--text-muted); display: block; margin-top: 5px; }
+
+.dl-rows-wrapper { display: flex; flex-direction: column; gap: 16px; }
+.dl-data-row {
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(255, 255, 255, 0.02); padding: 15px 22px; border-radius: 10px;
+    border: 1px solid var(--border-glow); font-size: 1.05rem; font-weight: 600;
+}
+.row-val { font-weight: 700; font-family: 'Orbitron', sans-serif; }
+.tag-cyan { color: var(--neon-cyan); }
+.text-neon-red { color: var(--neon-red); text-shadow: 0 0 10px rgba(255, 51, 85, 0.5); }
+
+/* টিউটোরিয়াল ব্যানার */
+.tutorial-card {
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(255, 51, 85, 0.02); border: 1px dashed rgba(255, 51, 85, 0.2);
+    padding: 16px 22px; border-radius: 10px; margin-top: 5px;
+}
+.tut-info h4 { margin: 0 0 4px 0; font-size: 1.1rem; color: var(--neon-red); }
+.tut-info p { margin: 0; color: var(--text-muted); font-size: 0.9rem; }
+.tut-link-btn {
+    background: var(--neon-red); color: #fff; text-decoration: none; padding: 8px 20px;
+    font-weight: 700; border-radius: 6px; box-shadow: 0 0 15px rgba(255, 51, 85, 0.3);
+    transition: all 0.2s ease;
+}
+.tut-link-btn:hover { background: #ff0033; transform: scale(1.03); }
+.crypto-notice { text-align: center; color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; margin: 10px 0; }
+
+/* গ্লোয়িং ডাউনলোড বাটন */
+.main-inject-btn {
+    background: #fff; color: #000; text-decoration: none; text-align: center;
+    padding: 18px; border-radius: 12px; font-family: 'Orbitron', sans-serif;
+    font-weight: 900; font-size: 1.15rem; letter-spacing: 1px;
+    box-shadow: 0 5px 20px rgba(255,255,255,0.15); transition: all 0.2s ease;
+}
+.main-inject-btn:hover { background: #f0f0f5; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,255,255,0.3); }
+
+/* নিয়ন টোস্ট নোটিফিকেশন */
+.neon-toast {
     position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%);
-    background: rgba(11, 11, 22, 0.9); backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.1); color: #fff;
-    padding: 16px 30px; border-radius: 8px; font-family: 'Rajdhani', sans-serif;
-    font-weight: 700; letter-spacing: 1px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 2000; display: flex; align-items: center; gap: 10px; opacity: 0;
+    background: #090a0f; border: 1px solid var(--neon-cyan); padding: 18px 35px;
+    border-radius: 12px; color: #fff; display: flex; align-items: center; gap: 12px;
+    font-size: 1.1rem; font-weight: 600; letter-spacing: 0.5px; opacity: 0; z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); overflow: hidden;
 }
-.toast-msg.show { bottom: 40px; opacity: 1; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+.neon-toast.active { bottom: 40px; opacity: 1; box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2); }
+.toast-loader {
+    position: absolute; bottom: 0; left: 0; height: 3px; background: var(--neon-cyan);
+    width: 100%; animation: load-out 3.5s linear forwards; display: none;
+}
+.neon-toast.active .toast-loader { display: block; }
+@keyframes load-out { from { width: 100%; } to { width: 0%; } }
+.neon-toast i { color: var(--neon-cyan); font-size: 1.2rem; }
 
 /* ফুটার */
-footer {
-    text-align: center; padding: 35px; color: var(--text-secondary);
-    font-family: 'Rajdhani', sans-serif; font-size: 0.9rem; letter-spacing: 1px;
-    border-top: 1px solid var(--border-color); background: var(--bg-secondary);
+.gaming-footer {
+    text-align: center; padding: 40px 20px; color: var(--text-muted);
+    font-size: 0.95rem; letter-spacing: 1px; border-top: 1px solid var(--border-glow);
+    background: var(--bg-dark-surface); margin-top: auto;
 }
+.logo-accent { color: var(--neon-red); font-weight: 700; }
 
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+/* রেসপনসিভ লেআউট */
 @media (max-width: 768px) {
-    .navbar { padding: 15px 20px; }
-    .nav-links { gap: 15px; }
-    #content-display-area { margin: 20px; padding: 25px; }
+    .nav-container { padding: 15px; }
+    .menu-list { gap: 15px; }
+    .main-hero { padding: 60px 15px 35px; }
+    .premium-dl-box { padding: 25px; }
 }
