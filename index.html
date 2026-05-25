@@ -27,6 +27,16 @@
             --border-color: rgba(192, 197, 206, 0.15);
             
             --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+            /* --- Custom Icon Glow Colors --- */
+            --icon-uid: #00e5ff;        /* Neon Aqua */
+            --icon-tournament: #ffca28; /* Trophy Gold */
+            --icon-guild: #e040fb;      /* Magic Purple */
+            --icon-panel: #00e676;      /* Matrix Green */
+            --icon-emu: #ff5252;        /* Cyber Red */
+            --icon-core: #ff9100;       /* Warning Orange */
+            --icon-v1: #2979ff;         /* Electric Blue */
+            --icon-v2: #ffd700;         /* Premium Gold */
         }
 
         body {
@@ -41,7 +51,7 @@
             cursor: default;
         }
 
-        /* Premium Silver Glow effect on mouse move - handled by JS */
+        /* Premium Silver Glow effect on mouse move */
         #cursor-glow {
             position: fixed;
             top: 0;
@@ -141,10 +151,10 @@
             text-transform: uppercase;
         }
 
-        /* --- Panel Cards Grid --- */
+        /* --- Panel Cards Grid (Fixed 3 Columns for Universal Size) --- */
         .panel-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             max-width: 1100px;
             margin: 0 auto 50px;
@@ -162,6 +172,10 @@
             overflow: hidden;
             cursor: pointer;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 180px;
         }
 
         /* Silver Glow border effect on hover */
@@ -170,7 +184,7 @@
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             border-radius: 16px;
-            padding: 2px; /* Border thickness */
+            padding: 2px;
             background: linear-gradient(135deg, transparent 40%, var(--accent-bright-silver), transparent 60%);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
@@ -187,7 +201,6 @@
         
         .panel-card:hover::before {
             opacity: 1;
-            /* Animated border reflection */
             background-size: 200% 200%;
             animation: borderShine 3s linear infinite;
         }
@@ -200,15 +213,28 @@
         .card-icon {
             font-size: 2.8rem;
             margin-bottom: 25px;
-            color: var(--accent-silver);
             transition: var(--transition-smooth);
         }
+
+        /* --- Individual Dynamic Icon Colors --- */
+        .c-uid { color: var(--icon-uid); text-shadow: 0 0 15px rgba(0, 229, 255, 0.2); }
+        .c-tournament { color: var(--icon-tournament); text-shadow: 0 0 15px rgba(255, 202, 40, 0.2); }
+        .c-guild { color: var(--icon-guild); text-shadow: 0 0 15px rgba(224, 64, 251, 0.2); }
+        .c-panel { color: var(--icon-panel); text-shadow: 0 0 15px rgba(0, 230, 118, 0.2); }
+        .c-emu { color: var(--icon-emu); text-shadow: 0 0 15px rgba(255, 82, 82, 0.2); }
+        .c-core { color: var(--icon-core); text-shadow: 0 0 15px rgba(255, 145, 0, 0.2); }
+        .c-v1 { color: var(--icon-v1); text-shadow: 0 0 15px rgba(41, 121, 255, 0.2); }
+        .c-v2 { color: var(--icon-v2); text-shadow: 0 0 15px rgba(255, 215, 0, 0.2); }
         
-        .panel-card:hover .card-icon {
-            color: var(--accent-bright-silver);
-            text-shadow: 0 0 15px var(--glow-strong);
-            transform: scale(1.1);
-        }
+        /* Stronger Glow on Card Hover */
+        .panel-card:hover .c-uid { text-shadow: 0 0 25px var(--icon-uid); transform: scale(1.1); }
+        .panel-card:hover .c-tournament { text-shadow: 0 0 25px var(--icon-tournament); transform: scale(1.1); }
+        .panel-card:hover .c-guild { text-shadow: 0 0 25px var(--icon-guild); transform: scale(1.1); }
+        .panel-card:hover .c-panel { text-shadow: 0 0 25px var(--icon-panel); transform: scale(1.1); }
+        .panel-card:hover .c-emu { text-shadow: 0 0 25px var(--icon-emu); transform: scale(1.1); }
+        .panel-card:hover .c-core { text-shadow: 0 0 25px var(--icon-core); transform: scale(1.1); }
+        .panel-card:hover .c-v1 { text-shadow: 0 0 25px var(--icon-v1); transform: scale(1.1); }
+        .panel-card:hover .c-v2 { text-shadow: 0 0 25px var(--icon-v2); transform: scale(1.1); }
 
         .panel-card h3 {
             font-family: 'Audiowide', cursive;
@@ -226,7 +252,7 @@
             margin: 0;
         }
 
-        /* Status Badge for Cards */
+        /* Status Badge */
         .status-badge {
             position: absolute;
             top: 15px;
@@ -270,7 +296,7 @@
             box-shadow: 0 0 10px rgba(255, 51, 102, 0.1);
         }
 
-        /* --- Content & Download Area --- */
+        /* --- Content Display Area --- */
         #content-display-area {
             display: none;
             max-width: 700px;
@@ -311,7 +337,6 @@
             box-shadow: 0 0 15px rgba(192, 197, 206, 0.1);
         }
 
-        /* Custom Box Styling for Sections */
         .info-card-box {
             background: rgba(255, 255, 255, 0.02);
             padding: 40px;
@@ -334,7 +359,7 @@
             letter-spacing: 2px;
         }
 
-        /* --- UID BYPASS Specific Styles --- */
+        /* --- Interface Styles --- */
         .download-interface {
             display: flex;
             flex-direction: column;
@@ -362,7 +387,6 @@
         .info-row-box i { color: var(--accent-silver); }
         .info-row-value { color: var(--accent-bright-silver); font-family: 'Inter', sans-serif; font-weight: 500; }
 
-        /* New Glowing Version Highlight Tag Badge */
         .version-badge-highlight {
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid var(--accent-bright-silver);
@@ -377,6 +401,7 @@
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
         }
 
+        /* Premium YouTube Custom Row */
         .video-link-banner {
             display: flex;
             align-items: center;
@@ -412,6 +437,41 @@
             border-color: #ff3366;
             box-shadow: 0 0 10px rgba(255, 51, 102, 0.3);
         }
+
+        /* Red Warning Banner Style for Tournament */
+        .warning-link-banner {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+            background: rgba(255, 50, 50, 0.04);
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 50, 50, 0.3);
+            width: 100%;
+            font-family: 'Rajdhani', sans-serif;
+            box-sizing: border-box;
+            text-align: left;
+            box-shadow: 0 0 15px rgba(255, 50, 50, 0.05);
+        }
+        .w-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ff3232;
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .w-desc {
+            color: #ff9999;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            line-height: 1.4;
+            margin: 0;
+        }
         
         .download-btn {
             display: inline-block;
@@ -431,6 +491,7 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
             width: 100%;
             text-align: center;
+            box-sizing: border-box;
         }
 
         .download-btn:hover {
@@ -439,7 +500,7 @@
             background: #e0e5ec;
         }
 
-        /* Coming Soon Modal/Toast */
+        /* Coming Soon Toast */
         .toast-msg {
             position: fixed;
             bottom: 30px;
@@ -470,10 +531,6 @@
             opacity: 1;
         }
 
-        .toast-msg i {
-            color: var(--accent-silver);
-        }
-
         footer {
             text-align: center;
             padding: 30px;
@@ -485,9 +542,14 @@
             background: var(--bg-secondary);
         }
 
+        /* --- Responsive Styles --- */
+        @media (max-width: 992px) {
+            .panel-container { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 768px) {
             .navbar { flex-direction: column; gap: 20px; padding: 20px; }
             .nav-links { flex-wrap: wrap; justify-content: center; }
+            .panel-container { grid-template-columns: 1fr; }
             #content-display-area { margin: 20px; padding: 60px 20px 30px; }
             .back-button { top: 15px; left: 15px; }
         }
@@ -518,42 +580,56 @@
             <div class="panel-card" onclick="showUIDBypass()">
                 <div class="status-badge status-active">Operational</div>
                 <div class="popular-badge">Popular</div>
-                <i class="fa-solid fa-fingerprint card-icon"></i>
+                <i class="fa-solid fa-fingerprint card-icon c-uid"></i>
                 <h3>FREE UID BYPASS</h3>
                 <p>Advanced identification masking and routing protocols.</p>
             </div>
 
+            <div class="panel-card" onclick="showTournamentBypass()">
+                <div class="status-badge status-active">Operational</div>
+                <i class="fa-solid fa-trophy card-icon c-tournament"></i>
+                <h3>TOURNAMENT UID BYPASS</h3>
+                <p>Specialized routing protocols for competitive tournament environments.</p>
+            </div>
+
             <div class="panel-card" onclick="showToast()">
                 <div class="status-badge status-upcoming">Pending</div>
-                <i class="fa-solid fa-bolt card-icon"></i>
+                <i class="fa-solid fa-robot card-icon c-guild"></i>
+                <h3>GUILD GLORY BOT</h3>
+                <p>Automated guild statistics tracker and honor manager core.</p>
+            </div>
+
+            <div class="panel-card" onclick="showToast()">
+                <div class="status-badge status-upcoming">Pending</div>
+                <i class="fa-solid fa-bolt card-icon c-panel"></i>
                 <h3>FREE PANEL</h3>
                 <p>Standard issue utility toolset. Currently undergoing maintenance.</p>
             </div>
 
             <div class="panel-card" onclick="showToast()">
                 <div class="status-badge status-upcoming">Pending</div>
-                <i class="fa-solid fa-desktop card-icon"></i>
+                <i class="fa-solid fa-desktop card-icon c-emu"></i>
                 <h3>EMULATOR BYPASS</h3>
                 <p>Virtual environment cloaking algorithms.</p>
             </div>
 
             <div class="panel-card" onclick="showToast()">
                 <div class="status-badge status-upcoming">Pending</div>
-                <i class="fa-solid fa-crosshairs card-icon"></i>
+                <i class="fa-solid fa-crosshairs card-icon c-core"></i>
                 <h3>TARGETING CORE</h3>
                 <p>Precision calibration and automated alignment.</p>
             </div>
             
             <div class="panel-card" onclick="showToast()">
                 <div class="status-badge status-upcoming">Pending</div>
-                <i class="fa-solid fa-gem card-icon"></i>
+                <i class="fa-solid fa-gem card-icon c-v1"></i>
                 <h3>PREMIUM V1</h3>
                 <p>Tier-1 access to restricted architectural nodes.</p>
             </div>
 
             <div class="panel-card" onclick="showToast()">
                 <div class="status-badge status-upcoming">Pending</div>
-                <i class="fa-solid fa-shield-halved card-icon"></i>
+                <i class="fa-solid fa-shield-halved card-icon c-v2"></i>
                 <h3>PREMIUM V2</h3>
                 <p>Elite security measures and full system override.</p>
             </div>
@@ -578,28 +654,20 @@
     </footer>
 
     <script>
-        // --- Custom Cursor Glow Effect ---
+        // --- Custom Cursor Glow ---
         const glow = document.getElementById('cursor-glow');
         
         document.addEventListener('mousemove', (e) => {
             glow.style.left = e.clientX + 'px';
             glow.style.top = e.clientY + 'px';
         });
-
-        document.addEventListener('mouseleave', () => {
-            glow.style.opacity = '0';
-        });
-        
-        document.addEventListener('mouseenter', () => {
-            glow.style.opacity = '0.15';
-        });
-
+        document.addEventListener('mouseleave', () => glow.style.opacity = '0');
+        document.addEventListener('mouseenter', () => glow.style.opacity = '0.15');
         document.addEventListener('mousedown', () => {
             glow.style.opacity = '0.25';
             glow.style.width = '350px';
             glow.style.height = '350px';
         });
-        
         document.addEventListener('mouseup', () => {
             glow.style.opacity = '0.15';
             glow.style.width = '400px';
@@ -621,7 +689,6 @@
         function showToast() {
             const toast = document.getElementById('toast');
             toast.classList.add('show');
-            
             clearTimeout(toastTimeout);
             toastTimeout = setTimeout(() => {
                 toast.classList.remove('show');
@@ -664,7 +731,43 @@
                     </div>
                 </div>
             `;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showTournamentBypass() {
+            mainContentDiv.style.display = 'none';
+            contentDisplayArea.style.display = 'block';
             
+            dynamicContentText.innerHTML = `
+                <div class="info-card-box">
+                    <h2 class="section-title-box">TOURNAMENT UID BYPASS</h2>
+                    
+                    <div class="download-interface">
+                        <div class="info-row-box">
+                            <span><i class="fa-solid fa-code-branch" style="margin-right: 10px;"></i> MODULE VERSION:</span>
+                            <span class="info-row-value version-badge-highlight">V1.0</span>
+                        </div>
+
+                        <div class="info-row-box">
+                            <span><i class="fa-solid fa-lock" style="margin-right: 10px;"></i> ZIP PASS:</span>
+                            <span class="info-row-value zip-pass" style="font-weight: bold; letter-spacing: 2px; text-shadow: 0 0 8px rgba(255,255,255,0.4);">1</span>
+                        </div>
+                        
+                        <div class="warning-link-banner">
+                            <span class="w-title"><i class="fa-solid fa-triangle-exclamation"></i> WARNING</span>
+                            <p class="w-desc">BR RANK OR CS MODE NOT SAFE.</p>
+                        </div>
+
+                        <p style="color: var(--text-secondary); margin: 5px 0 10px; font-size: 0.9rem; max-width: 400px; line-height: 1.6;">
+                            Tournament edition configuration file. Ensure setup matches system specs carefully.
+                        </p>
+
+                        <a href="NHE_TOURNAMENT_BYPASS_V1.0.zip" download="NHE_TOURNAMENT_BYPASS_V1.0.zip" class="download-btn">
+                            <i class="fa-solid fa-download" style="margin-right: 8px;"></i> INITIATE DOWNLOAD
+                        </a>
+                    </div>
+                </div>
+            `;
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
