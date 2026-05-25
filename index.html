@@ -350,7 +350,7 @@
             align-items: center;
             justify-content: space-between;
             background: rgba(192, 197, 206, 0.03);
-            padding: 12px 20px;
+            padding: 14px 20px;
             border-radius: 8px;
             border: 1px solid var(--border-color);
             width: 100%;
@@ -361,6 +361,21 @@
         }
         .info-row-box i { color: var(--accent-silver); }
         .info-row-value { color: var(--accent-bright-silver); font-family: 'Inter', sans-serif; font-weight: 500; }
+
+        /* New Glowing Version Highlight Tag Badge */
+        .version-badge-highlight {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--accent-bright-silver);
+            padding: 4px 14px;
+            border-radius: 20px;
+            color: var(--accent-bright-silver) !important;
+            font-family: 'Audiowide', sans-serif !important;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+        }
 
         .video-link-banner {
             display: flex;
@@ -567,12 +582,10 @@
         const glow = document.getElementById('cursor-glow');
         
         document.addEventListener('mousemove', (e) => {
-            // Update position
             glow.style.left = e.clientX + 'px';
             glow.style.top = e.clientY + 'px';
         });
 
-        // Dim glow when leaving window
         document.addEventListener('mouseleave', () => {
             glow.style.opacity = '0';
         });
@@ -581,7 +594,6 @@
             glow.style.opacity = '0.15';
         });
 
-        // Increase glow slightly when clicking
         document.addEventListener('mousedown', () => {
             glow.style.opacity = '0.25';
             glow.style.width = '350px';
@@ -606,7 +618,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Show "Coming Soon" Toast
         function showToast() {
             const toast = document.getElementById('toast');
             toast.classList.add('show');
@@ -617,7 +628,6 @@
             }, 3000);
         }
 
-        // Show UID BYPASS Content
         function showUIDBypass() {
             mainContentDiv.style.display = 'none';
             contentDisplayArea.style.display = 'block';
@@ -629,17 +639,17 @@
                     <div class="download-interface">
                         <div class="info-row-box">
                             <span><i class="fa-solid fa-code-branch" style="margin-right: 10px;"></i> BYPASS VERSION:</span>
-                            <span class="info-row-value">V2.4</span>
+                            <span class="info-row-value version-badge-highlight">V2.5</span>
                         </div>
 
                         <div class="info-row-box">
                             <span><i class="fa-solid fa-lock" style="margin-right: 10px;"></i> ZIP PASS:</span>
-                            <span class="info-row-value zip-pass" style="font-weight: bold; letter-spacing: 1px;">1</span>
+                            <span class="info-row-value zip-pass" style="font-weight: bold; letter-spacing: 2px; text-shadow: 0 0 8px rgba(255,255,255,0.4);">1</span>
                         </div>
                         
                         <div class="video-link-banner">
                             <span class="v-text"><i class="fa-brands fa-youtube"></i> USER PASS</span>
-                            <a href="https://discord.gg/MqpgJE25n5" target="_blank">
+                            <a href="https://youtu.be/qGXvde2g6mQ" target="_blank">
                                 <button class="v-btn">WATCH VIDEO</button>
                             </a>
                         </div>
@@ -648,7 +658,7 @@
                             Secure archive ready for deployment. Extract using the credentials listed above.
                         </p>
 
-                        <a href="NHE_UID_BYPASS_V2.4.zip" download="NHE_UID_BYPASS_V2.4.zip" class="download-btn">
+                        <a href="NHE_UID_BYPASS_V2.5.zip" download="NHE_UID_BYPASS_V2.5.zip" class="download-btn">
                             <i class="fa-solid fa-download" style="margin-right: 8px;"></i> INITIATE DOWNLOAD
                         </a>
                     </div>
