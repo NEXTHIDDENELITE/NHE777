@@ -744,15 +744,7 @@
             return true;
         }
 
-        if (typeof DisableDevtool === 'undefined') {
-            document.write('Security Module Missing. Access Denied.');
-            window.location.replace('about:blank');
-        } else {
-            DisableDevtool({
-                url: 'about:blank', timeOutUrl: 'about:blank', disableMenu: true,
-                disableSelect: true, disableCopy: true, disableCut: true,
-                disablePaste: true, clearLog: true, disableIframeParents: true, seo: true
-            });
+       
         }
         
         if (window.top !== window.self) {
